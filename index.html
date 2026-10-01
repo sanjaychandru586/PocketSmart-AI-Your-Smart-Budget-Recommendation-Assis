@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f0" />
+  <meta name="description" content="A thoughtful budget dashboard for seeing where your money goes and deciding what to do next." />
+  <title>PocketSmart — Money, more intentional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#overview"><span class="brand-mark">p<span>.</span></span><span>pocketsmart</span></a>
+    <p class="nav-caption">YOUR MONEY</p>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-view="overview"><span>◫</span>Overview</button>
+      <button class="nav-item" data-view="transactions"><span>↕</span>Transactions</button>
+      <button class="nav-item" data-view="budgets"><span>◎</span>Budgets</button>
+    </nav>
+    <div class="sidebar-bottom"><p><i></i> All caught up<br /><strong>Your money is in sync</strong></p><div class="profile"><span>AM</span><div><strong>Alex Morgan</strong><small>Personal account</small></div></div></div>
+  </aside>
+  <main>
+    <header class="topbar"><div class="breadcrumb">My finances <span>/</span> <strong id="breadcrumb">Overview</strong></div><div class="top-actions"><time id="today"></time><button class="primary add-button"><b>+</b> Add transaction</button></div></header>
+
+    <section class="page" id="overview-view">
+      <div class="page-heading"><div><p class="eyebrow">THURSDAY, OCTOBER 1</p><h1>Good morning, Alex <span class="sun">✳</span></h1><p class="subtitle">Here’s your money story this month.</p></div><button class="period">October 2026 <span>⌄</span></button></div>
+      <div class="summary-grid">
+        <article class="summary-card balance-card"><div class="card-top"><span class="label">MONTHLY BALANCE</span><span class="balance-icon">↗</span></div><div class="balance" id="balance">$2,840.50</div><div class="balance-note"><b>↑ 8.2%</b> vs. last month</div><div class="bars" aria-label="Six month balance trend"><i style="--h:35%"></i><i style="--h:48%"></i><i style="--h:43%"></i><i style="--h:67%"></i><i style="--h:58%"></i><i style="--h:82%"></i><i style="--h:72%"></i><i style="--h:93%"></i><i style="--h:75%"></i><i style="--h:100%"></i><i style="--h:84%"></i><i style="--h:89%"></i></div><div class="months"><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div></article>
+        <article class="summary-card"><div class="card-top"><span class="label">INCOME</span><span class="metric-icon income-icon">↙</span></div><div class="metric" id="income-total">$5,240.00</div><div class="metric-note"><span>This month</span><b class="good">↗ 12.4%</b></div><div class="progress"><i class="income-progress" style="width:76%"></i></div><div class="progress-note"><span>Monthly target</span><strong>$6,900</strong></div></article>
+        <article class="summary-card"><div class="card-top"><span class="label">SPENDING</span><span class="metric-icon spend-icon">↗</span></div><div class="metric" id="spending-total">$2,399.50</div><div class="metric-note"><span>This month</span><b class="good">↓ 4.8%</b></div><div class="progress"><i class="spend-progress" id="spending-progress" style="width:57%"></i></div><div class="progress-note"><span>Monthly budget</span><strong id="monthly-budget">$4,200</strong></div></article>
+      </div>
+      <div class="middle-grid">
+        <section class="panel"><div class="section-heading"><div><h2>Spending by category</h2><p>Where your money went this month</p></div><button class="text-button" data-go="budgets">View budgets →</button></div><div class="spending-layout"><div class="donut" id="donut"><div><strong id="donut-total">$2,399</strong><span>spent</span></div></div><div class="category-list" id="categories"></div></div></section>
+        <section class="panel insight-panel"><div class="section-heading"><div><span class="insight-label">✳ POCKET INSIGHT</span><h2>Your next best move</h2></div><span class="insight-index">01 / 03</span></div><div class="insight-copy"><span class="insight-icon" id="insight-icon">☕</span><h3 id="insight-title">A little less latte, a little more future.</h3><p id="insight-text"></p></div><button class="insight-action" id="insight-action">Explore savings idea →</button><div class="pagination"><i></i><i></i><i></i><span>Personalized for you</span></div></section>
+      </div>
+      <section class="panel transactions-panel"><div class="section-heading"><div><h2>Recent transactions</h2><p>Your latest money moves</p></div><button class="text-button" data-go="transactions">All transactions →</button></div><div class="table-scroll"><table><thead><tr><th>TRANSACTION</th><th>CATEGORY</th><th>DATE</th><th class="right">AMOUNT</th></tr></thead><tbody id="recent-rows"></tbody></table></div></section>
+      <footer>Made for mindful money. <span>Data stays on this device <i></i></span></footer>
+    </section>
+
+    <section class="page hidden" id="transactions-view"><div class="page-heading"><div><p class="eyebrow">YOUR MONEY, ACCOUNTED FOR</p><h1>Transactions</h1><p class="subtitle">Every little move adds up.</p></div><button class="primary add-button"><b>+</b> Add transaction</button></div><section class="panel full-table"><div class="section-heading"><div><h2>All activity</h2><p id="transaction-count"></p></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search transactions" aria-label="Search transactions" /></label></div><div class="table-scroll"><table><thead><tr><th>TRANSACTION</th><th>CATEGORY</th><th>DATE</th><th class="right">AMOUNT</th></tr></thead><tbody id="all-rows"></tbody></table></div></section></section>
+
+    <section class="page hidden" id="budgets-view"><div class="page-heading"><div><p class="eyebrow">A PLAN THAT BENDS WITH YOU</p><h1>Your budgets</h1><p class="subtitle">Little guardrails, a lot more clarity.</p></div><button class="secondary" id="edit-budgets">Adjust budgets</button></div><section class="budget-overview panel"><div><span class="label">MONTHLY SPENDING LIMIT</span><h2 id="budget-total"></h2><p><strong id="budget-spent"></strong> <span>this month</span></p></div><div class="budget-ring" id="budget-ring"><div><strong id="remaining-percent"></strong><span>remaining</span></div></div></section><section class="panel budget-panel"><div class="section-heading"><div><h2>Category budgets</h2><p>Keep each category on a comfortable track</p></div></div><div id="budget-list"></div></section></section>
+  </main>
+
+  <dialog id="transaction-dialog"><form id="transaction-form"><div class="dialog-heading"><div><p class="eyebrow">KEEP YOUR BUDGET CURRENT</p><h2>Add a transaction</h2></div><button class="close" type="button" aria-label="Close dialog">×</button></div><label class="field">Description<input name="description" placeholder="e.g. Weekly groceries" maxlength="60" required /></label><div class="form-row"><label class="field">Amount<div class="amount"><span>$</span><input name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required /></div></label><label class="field">Type<select name="type"><option value="expense">Expense</option><option value="income">Income</option></select></label></div><div class="form-row"><label class="field">Category<select name="category" id="category-select"></select></label><label class="field">Date<input name="date" id="transaction-date" type="date" required /></label></div><div class="dialog-actions"><button class="secondary close" type="button">Cancel</button><button class="primary" type="submit">Save transaction</button></div></form></dialog>
+  <dialog id="budgets-dialog"><form id="budgets-form"><div class="dialog-heading"><div><p class="eyebrow">MAKE THE PLAN YOURS</p><h2>Adjust your budgets</h2></div><button class="close" type="button" aria-label="Close dialog">×</button></div><div class="budget-fields" id="budget-fields"></div><div class="dialog-actions"><button class="secondary close" type="button">Cancel</button><button class="primary" type="submit">Save budgets</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
